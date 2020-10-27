@@ -78,7 +78,7 @@ namespace DownloadsManager
             }
         }
 
-        private void OpenChildForm(Form childForm)
+        private void OpenChildForm(Form childForm, string title)
         {
             if (currentChildForm != null)
             {
@@ -93,31 +93,31 @@ namespace DownloadsManager
             pnlDesktop.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
-            lblChildForm.Text = childForm.Text;
+            lblChildForm.Text = title;
         }
 
         private void btnFolders_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color6);
-            OpenChildForm(new Folders_form());
+            OpenChildForm(new Folders_form(), (sender as Button).Text);
         }
 
         private void btnDownloads_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color2);
-            OpenChildForm(new Downloads_form());
+            OpenChildForm(new Downloads_form(), (sender as Button).Text);
         }
 
         private void btnStats_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color3);
-            OpenChildForm(new Statistics_form());
+            OpenChildForm(new Statistics_form(), (sender as Button).Text);
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color5);
-            OpenChildForm(new Settings_form());
+            OpenChildForm(new Settings_form(), (sender as Button).Text);
         }
 
         private void btnHome_Click(object sender, EventArgs e)

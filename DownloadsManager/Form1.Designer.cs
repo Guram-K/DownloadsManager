@@ -321,6 +321,7 @@
             this.Controls.Add(this.pnlShadow);
             this.Controls.Add(this.pnlTitle);
             this.Controls.Add(this.panelMenu);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "Form1";
             this.panelMenu.ResumeLayout(false);
