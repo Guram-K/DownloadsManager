@@ -1,13 +1,9 @@
-﻿using FontAwesome.Sharp;
+﻿
+
+using FontAwesome.Sharp;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DownloadsManager
@@ -17,6 +13,7 @@ namespace DownloadsManager
         private IconButton currentButton;
         private Panel leftBorderbtn;
         private Form currentChildForm;
+
 
         public Form1()
         {
@@ -29,7 +26,10 @@ namespace DownloadsManager
             this.Text = string.Empty;
             this.ControlBox = false;
             this.DoubleBuffered = true;
+            notifyIcon1.Visible = false;
             //this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+
+            this.notifyIcon1.Icon = (System.Drawing.Icon)(Resources.iconFolder);
         }
 
         private struct RGBColors
@@ -80,7 +80,7 @@ namespace DownloadsManager
 
         private void OpenChildForm(Form childForm)
         {
-            if (iconCurrentChildForm != null)
+            if (currentChildForm != null)
             {
                 currentChildForm.Close();
             }
@@ -99,25 +99,30 @@ namespace DownloadsManager
         private void btnFolders_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color6);
+            OpenChildForm(new Folders_form());
         }
 
         private void btnDownloads_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color2);
+            OpenChildForm(new Downloads_form());
         }
 
         private void btnStats_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color3);
+            OpenChildForm(new Statistics_form());
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color5);
+            OpenChildForm(new Settings_form());
         }
 
         private void btnHome_Click(object sender, EventArgs e)
         {
+            currentChildForm.Close();
             Reset();
         }
 
@@ -142,6 +147,54 @@ namespace DownloadsManager
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnMaximize_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+                WindowState = FormWindowState.Maximized;
+            else
+                WindowState = FormWindowState.Normal;
+        }
+
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+
+            TrayMinimizerForm_Resize(sender, e);
+        }
+
+        //////////////////////////
+        ///
+
+        private void TrayMinimizerForm_Resize(object sender, EventArgs e)
+        {
+            notifyIcon1.BalloonTipTitle = "Minimize to Tray App";
+            notifyIcon1.BalloonTipText = "You have successfully minimized your form.";
+
+            if (FormWindowState.Minimized == this.WindowState)
+            {
+                notifyIcon1.Visible = true;
+                this.ShowInTaskbar = false;
+                this.Hide();
+            }
+            else if (FormWindowState.Normal == this.WindowState)
+            {
+                notifyIcon1.Visible = false;
+            }
+        }
+
+        private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
+            this.ShowInTaskbar = true;
+            notifyIcon1.Visible = false;
         }
     }
 }
