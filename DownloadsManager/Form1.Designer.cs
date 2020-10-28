@@ -196,7 +196,7 @@
             this.pnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTitle.Location = new System.Drawing.Point(220, 0);
             this.pnlTitle.Name = "pnlTitle";
-            this.pnlTitle.Size = new System.Drawing.Size(854, 75);
+            this.pnlTitle.Size = new System.Drawing.Size(854, 69);
             this.pnlTitle.TabIndex = 1;
             this.pnlTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTitle_MouseDown);
             // 
@@ -206,7 +206,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Location = new System.Drawing.Point(740, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(114, 75);
+            this.panel1.Size = new System.Drawing.Size(114, 69);
             this.panel1.TabIndex = 3;
             // 
             // panel2
@@ -292,7 +292,7 @@
             // 
             this.pnlShadow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(58)))));
             this.pnlShadow.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlShadow.Location = new System.Drawing.Point(220, 75);
+            this.pnlShadow.Location = new System.Drawing.Point(220, 69);
             this.pnlShadow.Name = "pnlShadow";
             this.pnlShadow.Size = new System.Drawing.Size(854, 9);
             this.pnlShadow.TabIndex = 2;
@@ -301,9 +301,9 @@
             // 
             this.pnlDesktop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
             this.pnlDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlDesktop.Location = new System.Drawing.Point(220, 84);
+            this.pnlDesktop.Location = new System.Drawing.Point(220, 78);
             this.pnlDesktop.Name = "pnlDesktop";
-            this.pnlDesktop.Size = new System.Drawing.Size(854, 554);
+            this.pnlDesktop.Size = new System.Drawing.Size(854, 560);
             this.pnlDesktop.TabIndex = 3;
             // 
             // notifyIcon1

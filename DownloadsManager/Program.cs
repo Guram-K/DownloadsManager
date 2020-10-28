@@ -1,5 +1,8 @@
-﻿using System;
+﻿using PCL_real.Abstraction.Services;
+using ServiceContainer;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +20,8 @@ namespace DownloadsManager
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+
+            CustomServiceContainer.AddService<IFileWatcher, FileWatcher>(new FileWatcher());
         }
     }
 }

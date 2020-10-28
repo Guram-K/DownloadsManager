@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DownloadsManager", "DownloadsManager\DownloadsManager.csproj", "{C9217EFB-72ED-4D0E-ACA4-F362E496693F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCL_real", "PCL_real\PCL_real.csproj", "{0F1BE5E2-E4CD-4A03-AB00-A0EAF914EC2F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C9217EFB-72ED-4D0E-ACA4-F362E496693F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9217EFB-72ED-4D0E-ACA4-F362E496693F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9217EFB-72ED-4D0E-ACA4-F362E496693F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F1BE5E2-E4CD-4A03-AB00-A0EAF914EC2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F1BE5E2-E4CD-4A03-AB00-A0EAF914EC2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F1BE5E2-E4CD-4A03-AB00-A0EAF914EC2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F1BE5E2-E4CD-4A03-AB00-A0EAF914EC2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

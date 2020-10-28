@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +13,12 @@ namespace DownloadsManager
 {
     public partial class Downloads_form : Form
     {
+        private string BasePath { get; set; } = @"D:\Downloads";
         public Downloads_form()
         {
             InitializeComponent();
+
+            
         }
     }
 }

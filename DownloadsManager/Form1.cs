@@ -18,6 +18,7 @@ namespace DownloadsManager
         public Form1()
         {
             InitializeComponent();
+            //FileWatcher fw = new FileWatcher(source);
             leftBorderbtn = new Panel();
             leftBorderbtn.Size = new Size(7,60);
             panelMenu.Controls.Add(leftBorderbtn);
