@@ -35,9 +35,6 @@
     <Reference Include="FontAwesome.Sharp, Version=5.15.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FontAwesome.Sharp.5.15.1\lib\net45\FontAwesome.Sharp.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceContainer">
-      <HintPath>..\..\..\BTU\Forms\DLicense\ServiceContainer.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -51,11 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="SubForms\Downloads_form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,10 +92,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="SubForms\Downloads_form.resx">
       <DependentUpon>Downloads_form.cs</DependentUpon>
     </EmbeddedResource>
@@ -120,15 +108,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\iconFolder.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\hnet.com-image.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\folder.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PCL_real\PCL_real.csproj">
