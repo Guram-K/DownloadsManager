@@ -1,8 +1,10 @@
 ﻿
 
+using DownloadsManager.Forms;
 using FontAwesome.Sharp;
 using System;
 using System.Drawing;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -13,7 +15,7 @@ namespace DownloadsManager
         private IconButton currentButton;
         private Panel leftBorderbtn;
         private Form currentChildForm;
-
+        private readonly FileSystemWatcher _fileSystemWatcher;
 
         public Form1()
         {
@@ -30,6 +32,21 @@ namespace DownloadsManager
             //this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
 
             this.notifyIcon1.Icon = (System.Drawing.Icon)(resources.iconFolder);
+
+            _fileSystemWatcher = new FileSystemWatcher(resources.targetPath);
+            _fileSystemWatcher.Created += new FileSystemEventHandler(_file_created);
+
+            _fileSystemWatcher.EnableRaisingEvents = true;
+            _fileSystemWatcher.IncludeSubdirectories = true;
+        }
+
+        private void _file_created(object sender, FileSystemEventArgs e)
+        {
+            Console.WriteLine("CREATED");
+            Console.WriteLine("CREATED");
+            Console.WriteLine("CREATED");
+            Console.WriteLine("CREATED");
+            notify();
         }
 
         private struct RGBColors
@@ -122,8 +139,10 @@ namespace DownloadsManager
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-            currentChildForm.Close();
+            if (currentChildForm != null)
+                currentChildForm.Close();
             Reset();
+            notify();
         }
 
         private void Reset()
@@ -195,6 +214,12 @@ namespace DownloadsManager
             this.WindowState = FormWindowState.Normal;
             this.ShowInTaskbar = true;
             notifyIcon1.Visible = false;
+        }
+
+        private void notify()
+        {
+            Notification_form ntf = new Notification_form();
+            ntf.showAlert("Downloaded...");
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using DownloadsManager.FileWatcher;
+using DownloadsManager.Forms;
 using PCL_real;
 using PCL_real.Abstraction.Services;
 using PCL_real.Implementation.Services;
@@ -20,8 +21,8 @@ namespace DownloadsManager
         [STAThread]
         static void Main()
         {
-            CustomServiceContainer.AddAsSignleton<IFileManager, FileManager>(new FileManager());
-            MyFileWatcher fe = new MyFileWatcher();
+            CustomServiceContainer.AddService<IFileManager, FileManager>(new FileManager());
+            MyFileWatcher fw = new MyFileWatcher();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

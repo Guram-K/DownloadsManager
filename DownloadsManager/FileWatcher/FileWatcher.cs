@@ -1,4 +1,5 @@
-﻿using PCL_real.Abstraction.Services;
+﻿using DownloadsManager.Forms;
+using PCL_real.Abstraction.Services;
 using ServiceContainer;
 using System;
 using System.Collections.Generic;

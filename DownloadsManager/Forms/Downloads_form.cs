@@ -17,7 +17,7 @@ namespace DownloadsManager
 {
     public partial class Downloads_form : Form
     {
-        private IEnumerable<ISavedFileModel> _files;
+        private IEnumerable<ISavedFileModel> _files { get; set; }
         public Downloads_form()
         {
             InitializeComponent();

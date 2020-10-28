@@ -71,6 +71,16 @@ namespace DownloadsManager {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgDownloaded {
+            get {
+                object obj = ResourceManager.GetObject("imgDownloaded", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to C:\Users\Guram Kasradze\Downloads.
         /// </summary>
         internal static string sourcePath {

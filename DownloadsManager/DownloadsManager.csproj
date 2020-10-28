@@ -54,6 +54,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileWatcher\FileWatcher.cs" />
+    <Compile Include="Forms\Notification_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Notification_form.Designer.cs">
+      <DependentUpon>Notification_form.cs</DependentUpon>
+    </Compile>
     <Compile Include="resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -71,11 +77,11 @@
     <Compile Include="Forms\Folders_form.Designer.cs">
       <DependentUpon>Folders_form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Form1.cs">
+    <Compile Include="Forms\Home_form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\Home_form.Designer.cs">
+      <DependentUpon>Home_form.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -91,8 +97,11 @@
     <Compile Include="Forms\Statistics_form.Designer.cs">
       <DependentUpon>Statistics_form.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Home_form.resx">
+      <DependentUpon>Home_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Notification_form.resx">
+      <DependentUpon>Notification_form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -133,6 +142,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\hnet.com-image.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\direct-download.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
