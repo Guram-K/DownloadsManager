@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PCL_real {
+namespace DownloadsManager {
     using System;
     
     
@@ -22,7 +22,7 @@ namespace PCL_real {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class resources {
+    internal class resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,10 +36,10 @@ namespace PCL_real {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PCL_real.resources", typeof(resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DownloadsManager.resources", typeof(resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace PCL_real {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace PCL_real {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        public static System.Drawing.Icon iconFolder {
+        internal static System.Drawing.Icon iconFolder {
             get {
                 object obj = ResourceManager.GetObject("iconFolder", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
@@ -73,7 +73,7 @@ namespace PCL_real {
         /// <summary>
         ///   Looks up a localized string similar to C:\Users\Guram Kasradze\Downloads.
         /// </summary>
-        public static string sourcePath {
+        internal static string sourcePath {
             get {
                 return ResourceManager.GetString("sourcePath", resourceCulture);
             }
@@ -82,7 +82,7 @@ namespace PCL_real {
         /// <summary>
         ///   Looks up a localized string similar to D:\Downloads.
         /// </summary>
-        public static string targetPath {
+        internal static string targetPath {
             get {
                 return ResourceManager.GetString("targetPath", resourceCulture);
             }

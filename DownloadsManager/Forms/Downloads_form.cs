@@ -1,4 +1,8 @@
-﻿using System;
+﻿using PCL_real.Abstraction.Models;
+using PCL_real.Abstraction.Services;
+using PCL_real.Implementation.Models;
+using ServiceContainer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,12 +17,12 @@ namespace DownloadsManager
 {
     public partial class Downloads_form : Form
     {
-        private string BasePath { get; set; } = @"D:\Downloads";
+        private IEnumerable<ISavedFileModel> _files;
         public Downloads_form()
         {
             InitializeComponent();
-
-            
+            _files = new List<SavedFileModel>();
+            _files = CustomServiceContainer.GetService<IFileManager>().GetAllFiles(resources.targetPath);
         }
     }
 }

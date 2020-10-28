@@ -3,15 +3,17 @@ using ServiceContainer;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace PCL_real.Implementation.Services
+namespace DownloadsManager.FileWatcher
 {
-    public class FileWatcher : IFileWatcher
+    public class MyFileWatcher
     {
         private readonly FileSystemWatcher _fileSystemWatcher;
 
-        public FileWatcher()
+        public MyFileWatcher()
         {
             _fileSystemWatcher = new FileSystemWatcher(resources.sourcePath);
             _fileSystemWatcher.Created += new FileSystemEventHandler(_fileWatcher_Created);

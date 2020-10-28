@@ -18,7 +18,6 @@ namespace DownloadsManager
         public Form1()
         {
             InitializeComponent();
-            //FileWatcher fw = new FileWatcher(source);
             leftBorderbtn = new Panel();
             leftBorderbtn.Size = new Size(7,60);
             panelMenu.Controls.Add(leftBorderbtn);
@@ -30,7 +29,7 @@ namespace DownloadsManager
             notifyIcon1.Visible = false;
             //this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
 
-            this.notifyIcon1.Icon = (System.Drawing.Icon)(Resources.iconFolder);
+            this.notifyIcon1.Icon = (System.Drawing.Icon)(resources.iconFolder);
         }
 
         private struct RGBColors

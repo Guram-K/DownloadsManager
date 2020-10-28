@@ -11,18 +11,18 @@ namespace PCL_real.Implementation.Services
 {
     public class FileManager : IFileManager
     {
-        public IEnumerable<IFileType> GetAllFiles(string sourcePath, string targetPath)
+        public IEnumerable<ISavedFileModel> GetAllFiles(string targetPath)
         {
             var AllFiles = new List<string>();
 
-            if (Directory.Exists(sourcePath)) 
-                AllFiles = Directory.GetFiles(sourcePath, "*.*", SearchOption.AllDirectories).ToList();
+            if (Directory.Exists(targetPath)) 
+                AllFiles = Directory.GetFiles(targetPath, "*.*", SearchOption.AllDirectories).ToList();
 
 
-            return GetModelList(AllFiles, sourcePath, targetPath);
+            return GetSavedModels(AllFiles, targetPath);
         }
 
-        public IEnumerable<IFileType> GetDirFiles(string sourcePath, string targetPath)
+        public IEnumerable<IFileModel> GetDirFiles(string sourcePath, string targetPath)
         {
             List<string> files = new List<string>();
 
@@ -41,9 +41,9 @@ namespace PCL_real.Implementation.Services
             return GetModelList(files, sourcePath, targetPath);
         }
 
-        public void MoveFiles(string sourcePath, string targetDir)
+        public void MoveFiles(string sourcePath, string targetPath)
         {
-            var files = GetDirFiles(sourcePath, targetDir); // gets list of files from Downloads folder (list contains full path of every file)
+            var files = GetDirFiles(sourcePath, targetPath); // gets list of files from Downloads folder (list contains full path of every file)
 
             foreach (var file in files)
             {
@@ -54,9 +54,9 @@ namespace PCL_real.Implementation.Services
             }
         }
 
-        private IFileType ToModel(string fullPath, string sourcePath, string targetPath)
+        private IFileModel ToModel(string fullPath, string sourcePath, string targetPath)
         {
-            FileType fileModel = new FileType()
+            FileModel fileModel = new FileModel()
             {
                 FullSourcePath = fullPath,
                 BasePath = sourcePath,
@@ -69,11 +69,31 @@ namespace PCL_real.Implementation.Services
             return fileModel;
         }
 
-        public IEnumerable<IFileType> GetModelList(List<string> files, string sourcePath, string targetPath) 
+        private ISavedFileModel ToSavedModel(string fullPath, string targetPath)
+        {
+            SavedFileModel savedFile = new SavedFileModel()
+            {
+                FullPath = fullPath,
+                FileName = Path.GetFileName(fullPath),
+                Extension = Path.GetExtension(fullPath).Substring(1)
+            };
+
+            return savedFile;
+        }
+
+        public IEnumerable<IFileModel> GetModelList(List<string> files, string sourcePath, string targetPath) 
         {
             foreach (var file in files)
             {
                 yield return ToModel(file, sourcePath, targetPath);
+            }
+        }
+
+        public IEnumerable<ISavedFileModel> GetSavedModels(List<string> files, string targetPath)
+        {
+            foreach (var file in files)
+            {
+                yield return ToSavedModel(file, targetPath);
             }
         }
     }

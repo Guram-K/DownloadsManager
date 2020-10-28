@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PCL_real.Implementation.Models
 {
-    public class FileType : IFileType
+    public class FileModel : IFileModel
     {
         public string FullSourcePath { get; set; }
         public string BasePath { get; set; }

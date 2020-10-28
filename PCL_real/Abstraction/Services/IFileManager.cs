@@ -7,9 +7,10 @@ namespace PCL_real.Abstraction.Services
 {
     public interface IFileManager
     {
-        IEnumerable<IFileType> GetAllFiles(string sourceDir, string targetDir);
-        IEnumerable<IFileType> GetDirFiles(string sourceDir, string targetDir);
-        void MoveFiles(string sourceDir, string targetDir);
-        IEnumerable<IFileType> GetModelList(List<string> files, string sourceDir, string targetDir);
+        IEnumerable<ISavedFileModel> GetAllFiles(string targetPath);
+        IEnumerable<IFileModel> GetDirFiles(string sourcePath, string targetPath);
+        void MoveFiles(string sourcePath, string targetPath);
+        IEnumerable<IFileModel> GetModelList(List<string> files, string sourcePath, string targetPath);
+        IEnumerable<ISavedFileModel> GetSavedModels(List<string> files, string targetPath);
     }
 }

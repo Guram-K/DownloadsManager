@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PCL_real</RootNamespace>
     <AssemblyName>PCL_real</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,9 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ServiceContainer">
-      <HintPath>..\..\..\BTU\Forms\DLicense\ServiceContainer.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -45,29 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstraction\Models\IFileType.cs" />
+    <Compile Include="Abstraction\Models\IFileModel.cs" />
+    <Compile Include="Abstraction\Models\ISavedFileModel.cs" />
     <Compile Include="Abstraction\Services\IFileManager.cs" />
-    <Compile Include="Abstraction\Services\IFileWatcher.cs" />
-    <Compile Include="Initializer.cs" />
-    <Compile Include="Implementation\Models\FileType.cs" />
+    <Compile Include="Implementation\Models\FileModel.cs" />
+    <Compile Include="Implementation\Models\SavedFileModel.cs" />
     <Compile Include="Implementation\Services\FileManager.cs" />
-    <Compile Include="Implementation\Services\FileWatcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>resources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
-      <LastGenOutput>resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\hnet.com-image.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PCL_real.Abstraction.Models
 {
-    public interface IFileType
+    public interface IFileModel
     {
         string FullSourcePath { get; set; }
         string BasePath { get; set; }
