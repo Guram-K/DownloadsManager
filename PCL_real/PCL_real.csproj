@@ -49,6 +49,7 @@
     <Compile Include="Implementation\Models\FileModel.cs" />
     <Compile Include="Implementation\Models\SavedFileModel.cs" />
     <Compile Include="Implementation\Services\FileManager.cs" />
+    <Compile Include="Implementation\Services\ReadWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

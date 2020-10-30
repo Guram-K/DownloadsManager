@@ -6,9 +6,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PCL_real.Implementation.Services
 {
+    //D:\Downloads\.DownloadsManagerBin
     public class FileManager : IFileManager
     {
         public IEnumerable<ISavedFileModel> GetAllFiles(string targetPath)
@@ -22,36 +24,39 @@ namespace PCL_real.Implementation.Services
             return GetSavedModels(AllFiles, targetPath);
         }
 
-        public IEnumerable<IFileModel> GetDirFiles(string sourcePath, string targetPath)
+        public async Task<IEnumerable<IFileModel>> GetDirFiles(string sourcePath, string targetPath)
         {
             List<string> files = new List<string>();
 
-            if (Directory.Exists(sourcePath) && Directory.GetFiles(sourcePath).Length > 1)
+            if (Directory.Exists(sourcePath))
             {
-                files = Directory.GetFiles(sourcePath).ToList();
-                List<string> tmps = files.Where(x => x.Contains(".tmp") || x.Contains(".crdownload")).ToList();
-                foreach (var tmp in tmps)
-                {
-                    files.Remove(tmp);
-                }
+                var tmp = Directory.GetFiles(sourcePath).ToList();
+                var extensions = (await ReadWriter.GetInstance().Read()).ToList();
 
-                files.Remove(Path.Combine(sourcePath, "desktop.ini"));
+                foreach (var file in tmp)
+                {
+                    if (extensions.FirstOrDefault(x => Path.GetExtension(file).Substring(1) == x) != default)
+                    {
+                        files.Add(file);
+                    }
+                }
             }
 
             return GetModelList(files, sourcePath, targetPath);
         }
 
-        public void MoveFiles(string sourcePath, string targetPath)
+        public async Task<bool> MoveFiles(string sourcePath, string targetPath)
         {
-            var files = GetDirFiles(sourcePath, targetPath); // gets list of files from Downloads folder (list contains full path of every file)
-
+            var files = await GetDirFiles(sourcePath, targetPath);
             foreach (var file in files)
             {
                 Directory.CreateDirectory(file.TargetPath); // creates folder with name of file extension (if it does not exist) 
 
-                try { File.Move(file.FullSourcePath, file.FullTargetPath); }
+                try { File.Move(file.FullSourcePath, file.FullTargetPath); return true; }
                 catch (Exception e) { File.WriteAllText(Path.Combine(file.TargetPath, "move_log.txt"), e.Message); }
             }
+
+            return false;
         }
 
         private IFileModel ToModel(string fullPath, string sourcePath, string targetPath)

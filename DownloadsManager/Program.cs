@@ -21,12 +21,15 @@ namespace DownloadsManager
         [STAThread]
         static void Main()
         {
-            CustomServiceContainer.AddService<IFileManager, FileManager>(new FileManager());
-            MyFileWatcher fw = new MyFileWatcher();
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            MyFileWatcher fw = new MyFileWatcher();
+            var frm = new Form1(fw);
+
+            CustomServiceContainer.AddService<IFileManager, FileManager>(new FileManager());
+            
+            Application.Run(frm);
         }
     }
 }

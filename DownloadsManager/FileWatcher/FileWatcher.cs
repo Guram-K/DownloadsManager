@@ -7,25 +7,41 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DownloadsManager.FileWatcher
 {
     public class MyFileWatcher
     {
-        private readonly FileSystemWatcher _fileSystemWatcher;
+        public readonly FileSystemWatcher _fileSystemWatcher;
 
         public MyFileWatcher()
         {
             _fileSystemWatcher = new FileSystemWatcher(resources.sourcePath);
-            _fileSystemWatcher.Created += new FileSystemEventHandler(_fileWatcher_Created);
-            _fileSystemWatcher.Changed += new FileSystemEventHandler(_fileWatcher_Created);
+            //_fileSystemWatcher.Created += (sender, e) => _fileWatcher_Created(sender, e);
+            _fileSystemWatcher.Changed += (sender, e) => _fileWatcher_Changed(sender, e);
+            //_fileSystemWatcher.Deleted += new FileSystemEventHandler(_fileWatcher_Created);
+            //_fileSystemWatcher.Renamed += new FileSystemEventHandler(_fileWatcher_Created);
 
             _fileSystemWatcher.EnableRaisingEvents = true;
+            //_fileSystemWatcher.IncludeSubdirectories = true;
         }
 
-        private void _fileWatcher_Created(object sender, FileSystemEventArgs e)
+        private async void _fileWatcher_Created(object sender, FileSystemEventArgs e)
         {
-            CustomServiceContainer.GetService<IFileManager>().MoveFiles(resources.sourcePath, resources.targetPath);
+            
+        }
+
+        private async void _fileWatcher_Changed(object sender, FileSystemEventArgs e)
+        {
+            if ((await CustomServiceContainer.GetService<IFileManager>().MoveFiles(resources.sourcePath, resources.targetPath)))
+            {
+                Notification_form ntf = new Notification_form();
+                ntf.showAlert(this.ToString());
+                Console.WriteLine("SSS");
+            }
+            else
+                Console.WriteLine("FFF");
         }
     }
 }

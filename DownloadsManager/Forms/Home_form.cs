@@ -1,5 +1,6 @@
 ﻿
 
+using DownloadsManager.FileWatcher;
 using DownloadsManager.Forms;
 using FontAwesome.Sharp;
 using System;
@@ -15,9 +16,8 @@ namespace DownloadsManager
         private IconButton currentButton;
         private Panel leftBorderbtn;
         private Form currentChildForm;
-        private readonly FileSystemWatcher _fileSystemWatcher;
 
-        public Form1()
+        public Form1(MyFileWatcher fw)
         {
             InitializeComponent();
             leftBorderbtn = new Panel();
@@ -31,22 +31,7 @@ namespace DownloadsManager
             notifyIcon1.Visible = false;
             //this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
 
-            this.notifyIcon1.Icon = (System.Drawing.Icon)(resources.iconFolder);
-
-            _fileSystemWatcher = new FileSystemWatcher(resources.targetPath);
-            _fileSystemWatcher.Created += new FileSystemEventHandler(_file_created);
-
-            _fileSystemWatcher.EnableRaisingEvents = true;
-            _fileSystemWatcher.IncludeSubdirectories = true;
-        }
-
-        private void _file_created(object sender, FileSystemEventArgs e)
-        {
-            Console.WriteLine("CREATED");
-            Console.WriteLine("CREATED");
-            Console.WriteLine("CREATED");
-            Console.WriteLine("CREATED");
-            notify();
+            fw._fileSystemWatcher.SynchronizingObject = this;
         }
 
         private struct RGBColors
@@ -142,7 +127,7 @@ namespace DownloadsManager
             if (currentChildForm != null)
                 currentChildForm.Close();
             Reset();
-            notify();
+            notify("Home Clicked");
         }
 
         private void Reset()
@@ -188,9 +173,6 @@ namespace DownloadsManager
             TrayMinimizerForm_Resize(sender, e);
         }
 
-        //////////////////////////
-        ///
-
         private void TrayMinimizerForm_Resize(object sender, EventArgs e)
         {
             notifyIcon1.BalloonTipTitle = "Minimize to Tray App";
@@ -199,6 +181,7 @@ namespace DownloadsManager
             if (FormWindowState.Minimized == this.WindowState)
             {
                 notifyIcon1.Visible = true;
+                notifyIcon1.Icon = resources.iconFolder;
                 this.ShowInTaskbar = false;
                 this.Hide();
             }
@@ -216,10 +199,10 @@ namespace DownloadsManager
             notifyIcon1.Visible = false;
         }
 
-        private void notify()
+        public void notify(string eventType)
         {
             Notification_form ntf = new Notification_form();
-            ntf.showAlert("Downloaded...");
+            ntf.showAlert(eventType);
         }
     }
 }
