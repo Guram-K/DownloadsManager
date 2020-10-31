@@ -11,5 +11,7 @@ namespace PCL_real.Abstraction.Models
         string FullPath { get; set; }
         string FileName { get; set; }
         string Extension { get; set; }
+        DateTime Creation { get; set; }
+        DateTime Modification { get; set; }
     }
 }

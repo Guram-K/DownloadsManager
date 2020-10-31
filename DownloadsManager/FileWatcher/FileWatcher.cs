@@ -27,21 +27,21 @@ namespace DownloadsManager.FileWatcher
             //_fileSystemWatcher.IncludeSubdirectories = true;
         }
 
-        private async void _fileWatcher_Created(object sender, FileSystemEventArgs e)
-        {
-            
-        }
+        //private async void _fileWatcher_Created(object sender, FileSystemEventArgs e) { }
 
         private async void _fileWatcher_Changed(object sender, FileSystemEventArgs e)
         {
-            if ((await CustomServiceContainer.GetService<IFileManager>().MoveFiles(resources.sourcePath, resources.targetPath)))
+            var files = await CustomServiceContainer.GetService<IFileManager>().GetDirFiles(resources.sourcePath, resources.targetPath);
+
+            foreach (var file in files)
             {
-                Notification_form ntf = new Notification_form();
-                ntf.showAlert(this.ToString());
-                Console.WriteLine("SSS");
+                var result = await CustomServiceContainer.GetService<IFileManager>().MoveFiles(file, resources.sourcePath, resources.targetPath);
+                if (result)
+                {
+                    Notification_form ntf = new Notification_form(file.TargetPath);
+                    ntf.showAlert(file.FileName + " has downloaded", file.Creation.ToString("h:mm tt"));
+                }
             }
-            else
-                Console.WriteLine("FFF");
         }
     }
 }

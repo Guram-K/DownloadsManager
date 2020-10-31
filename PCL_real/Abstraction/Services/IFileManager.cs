@@ -10,7 +10,7 @@ namespace PCL_real.Abstraction.Services
     {
         IEnumerable<ISavedFileModel> GetAllFiles(string targetPath);
         Task<IEnumerable<IFileModel>> GetDirFiles(string sourcePath, string targetPath);
-        Task<bool> MoveFiles(string sourcePath, string targetPath);
+        Task<bool> MoveFiles(IFileModel file, string sourcePath, string targetPath);
         IEnumerable<IFileModel> GetModelList(List<string> files, string sourcePath, string targetPath);
         IEnumerable<ISavedFileModel> GetSavedModels(List<string> files, string targetPath);
     }

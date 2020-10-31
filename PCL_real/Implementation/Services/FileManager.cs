@@ -45,45 +45,40 @@ namespace PCL_real.Implementation.Services
             return GetModelList(files, sourcePath, targetPath);
         }
 
-        public async Task<bool> MoveFiles(string sourcePath, string targetPath)
+        public async Task<bool> MoveFiles(IFileModel file, string sourcePath, string targetPath)
         {
-            var files = await GetDirFiles(sourcePath, targetPath);
-            foreach (var file in files)
-            {
-                Directory.CreateDirectory(file.TargetPath); // creates folder with name of file extension (if it does not exist) 
-
-                try { File.Move(file.FullSourcePath, file.FullTargetPath); return true; }
-                catch (Exception e) { File.WriteAllText(Path.Combine(file.TargetPath, "move_log.txt"), e.Message); }
-            }
+            Directory.CreateDirectory(file.TargetPath); // creates folder with name of file extension (if it does not exist) 
+            try { File.Move(file.FullSourcePath, file.FullTargetPath); return true; }
+            catch (Exception e) { File.WriteAllText(Path.Combine(file.TargetPath, "move_log.txt"), e.Message); }
 
             return false;
         }
 
         private IFileModel ToModel(string fullPath, string sourcePath, string targetPath)
         {
-            FileModel fileModel = new FileModel()
+            return new FileModel()
             {
                 FullSourcePath = fullPath,
                 BasePath = sourcePath,
                 FileName = Path.GetFileName(fullPath),
                 Extension = Path.GetExtension(fullPath).Substring(1),
                 TargetPath = Path.Combine(targetPath, Path.GetExtension(fullPath).Substring(1)),
-                FullTargetPath = Path.Combine(targetPath, Path.GetExtension(fullPath).Substring(1), Path.GetFileName(fullPath))
+                FullTargetPath = Path.Combine(targetPath, Path.GetExtension(fullPath).Substring(1), Path.GetFileName(fullPath)),
+                Creation = File.GetCreationTime(fullPath),
+                Modification = File.GetLastWriteTime(fullPath)
             };
-
-            return fileModel;
         }
 
         private ISavedFileModel ToSavedModel(string fullPath, string targetPath)
         {
-            SavedFileModel savedFile = new SavedFileModel()
+            return new SavedFileModel()
             {
                 FullPath = fullPath,
                 FileName = Path.GetFileName(fullPath),
-                Extension = Path.GetExtension(fullPath).Substring(1)
+                Extension = Path.GetExtension(fullPath).Substring(1),
+                Creation = File.GetCreationTime(fullPath),
+                Modification = File.GetLastWriteTime(fullPath)
             };
-
-            return savedFile;
         }
 
         public IEnumerable<IFileModel> GetModelList(List<string> files, string sourcePath, string targetPath) 

@@ -12,5 +12,7 @@ namespace PCL_real.Abstraction.Models
         string Extension { get; set; }
         string TargetPath { get; set; }
         string FullTargetPath { get; set; }
+        DateTime Creation { get; set; }
+        DateTime Modification { get; set; }
     }
 }

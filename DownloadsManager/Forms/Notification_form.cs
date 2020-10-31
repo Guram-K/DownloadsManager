@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,10 +15,12 @@ namespace DownloadsManager.Forms
     {
         private int x { get; set; }
         private int y { get; set; }
+        private string _targetPath { get; set; }
 
-        public Notification_form()
+        public Notification_form(string targetPath)
         {
             InitializeComponent();
+            _targetPath = targetPath;
         }
 
         public enum enmAction
@@ -29,7 +32,7 @@ namespace DownloadsManager.Forms
 
         private Notification_form.enmAction action;
 
-        public void showAlert(string msg)
+        public void showAlert(string msg, string time)
         {
             this.Opacity = 0.0;
             this.StartPosition = FormStartPosition.Manual;
@@ -53,6 +56,7 @@ namespace DownloadsManager.Forms
             this.x = Screen.PrimaryScreen.WorkingArea.Width - base.Width - 5;
 
             this.lblTitle.Text = msg;
+            this.lblTime.Text = time;
 
             this.Show();
             this.action = enmAction.start;
@@ -100,6 +104,11 @@ namespace DownloadsManager.Forms
         {
             timer1.Interval = 1;
             action = enmAction.close;
+        }
+
+        private void btnOpenDir_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", _targetPath);
         }
     }
 }

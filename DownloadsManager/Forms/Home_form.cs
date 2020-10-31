@@ -127,7 +127,6 @@ namespace DownloadsManager
             if (currentChildForm != null)
                 currentChildForm.Close();
             Reset();
-            notify("Home Clicked");
         }
 
         private void Reset()
@@ -197,12 +196,6 @@ namespace DownloadsManager
             this.WindowState = FormWindowState.Normal;
             this.ShowInTaskbar = true;
             notifyIcon1.Visible = false;
-        }
-
-        public void notify(string eventType)
-        {
-            Notification_form ntf = new Notification_form();
-            ntf.showAlert(eventType);
         }
     }
 }

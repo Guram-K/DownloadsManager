@@ -13,5 +13,7 @@ namespace PCL_real.Implementation.Models
         public string Extension { get; set; }
         public string TargetPath { get; set; }
         public string FullTargetPath { get; set; }
+        public DateTime Creation { get; set; }
+        public DateTime Modification { get; set; }
     }
 }
