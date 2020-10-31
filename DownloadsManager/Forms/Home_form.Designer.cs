@@ -47,7 +47,25 @@
             this.iconCurrentChildForm = new FontAwesome.Sharp.IconPictureBox();
             this.pnlShadow = new System.Windows.Forms.Panel();
             this.pnlDesktop = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.lblClock = new System.Windows.Forms.Label();
+            this.pnlStatsOnHome = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.pcbWeather = new System.Windows.Forms.PictureBox();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.lblCity = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.lblTemp = new System.Windows.Forms.Label();
+            this.lblWeatherDesc = new System.Windows.Forms.Label();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnHome)).BeginInit();
@@ -55,6 +73,18 @@
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconCurrentChildForm)).BeginInit();
+            this.pnlDesktop.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel4.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbWeather)).BeginInit();
+            this.panel10.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -178,10 +208,11 @@
             // 
             // btnHome
             // 
-            this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
-            this.btnHome.Location = new System.Drawing.Point(25, 12);
+            this.btnHome.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnHome.Image = global::DownloadsManager.resources.earth;
+            this.btnHome.Location = new System.Drawing.Point(0, 0);
             this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(160, 134);
+            this.btnHome.Size = new System.Drawing.Size(220, 163);
             this.btnHome.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnHome.TabIndex = 0;
             this.btnHome.TabStop = false;
@@ -300,17 +331,209 @@
             // pnlDesktop
             // 
             this.pnlDesktop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.pnlDesktop.Controls.Add(this.tableLayoutPanel1);
             this.pnlDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlDesktop.Location = new System.Drawing.Point(220, 78);
             this.pnlDesktop.Name = "pnlDesktop";
             this.pnlDesktop.Size = new System.Drawing.Size(854, 560);
             this.pnlDesktop.TabIndex = 3;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.pnlStatsOnHome, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panel6, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(854, 560);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.panel5);
+            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(421, 274);
+            this.panel3.TabIndex = 0;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.lblDate);
+            this.panel5.Controls.Add(this.pictureBox1);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(421, 174);
+            this.panel5.TabIndex = 1;
+            // 
+            // lblDate
+            // 
+            this.lblDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDate.Font = new System.Drawing.Font("Yu Gothic UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.lblDate.Location = new System.Drawing.Point(0, 0);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(421, 174);
+            this.lblDate.TabIndex = 3;
+            this.lblDate.Text = "1 November 2020";
+            this.lblDate.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.InitialImage = null;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(421, 174);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.lblClock);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(0, 174);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(421, 100);
+            this.panel4.TabIndex = 0;
+            // 
+            // lblClock
+            // 
+            this.lblClock.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblClock.Font = new System.Drawing.Font("Yu Gothic UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClock.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.lblClock.Location = new System.Drawing.Point(0, 0);
+            this.lblClock.Name = "lblClock";
+            this.lblClock.Size = new System.Drawing.Size(421, 100);
+            this.lblClock.TabIndex = 2;
+            this.lblClock.Text = "12:34:52 AM";
+            this.lblClock.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pnlStatsOnHome
+            // 
+            this.pnlStatsOnHome.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlStatsOnHome.Location = new System.Drawing.Point(430, 283);
+            this.pnlStatsOnHome.Name = "pnlStatsOnHome";
+            this.pnlStatsOnHome.Size = new System.Drawing.Size(421, 274);
+            this.pnlStatsOnHome.TabIndex = 1;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.panel8);
+            this.panel6.Controls.Add(this.panel7);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(430, 3);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(421, 274);
+            this.panel6.TabIndex = 2;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.pcbWeather);
+            this.panel8.Controls.Add(this.panel10);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel8.Location = new System.Drawing.Point(0, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(421, 174);
+            this.panel8.TabIndex = 2;
+            // 
+            // pcbWeather
+            // 
+            this.pcbWeather.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pcbWeather.Location = new System.Drawing.Point(151, 0);
+            this.pcbWeather.Name = "pcbWeather";
+            this.pcbWeather.Size = new System.Drawing.Size(270, 174);
+            this.pcbWeather.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pcbWeather.TabIndex = 2;
+            this.pcbWeather.TabStop = false;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.lblCity);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel10.Location = new System.Drawing.Point(0, 0);
+            this.panel10.Name = "panel10";
+            this.panel10.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.panel10.Size = new System.Drawing.Size(151, 174);
+            this.panel10.TabIndex = 1;
+            // 
+            // lblCity
+            // 
+            this.lblCity.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblCity.Font = new System.Drawing.Font("Yu Gothic UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCity.ForeColor = System.Drawing.Color.GhostWhite;
+            this.lblCity.Location = new System.Drawing.Point(0, 0);
+            this.lblCity.Name = "lblCity";
+            this.lblCity.Size = new System.Drawing.Size(141, 174);
+            this.lblCity.TabIndex = 0;
+            this.lblCity.Text = "Tbilisi";
+            this.lblCity.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.panel9);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel7.Location = new System.Drawing.Point(0, 174);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(421, 100);
+            this.panel7.TabIndex = 1;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.lblTemp);
+            this.panel9.Controls.Add(this.lblWeatherDesc);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(0, 0);
+            this.panel9.Name = "panel9";
+            this.panel9.Padding = new System.Windows.Forms.Padding(15, 15, 0, 15);
+            this.panel9.Size = new System.Drawing.Size(421, 100);
+            this.panel9.TabIndex = 0;
+            // 
+            // lblTemp
+            // 
+            this.lblTemp.BackColor = System.Drawing.Color.Transparent;
+            this.lblTemp.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblTemp.Font = new System.Drawing.Font("Yu Gothic UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTemp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
+            this.lblTemp.Location = new System.Drawing.Point(15, 60);
+            this.lblTemp.Name = "lblTemp";
+            this.lblTemp.Size = new System.Drawing.Size(406, 25);
+            this.lblTemp.TabIndex = 3;
+            this.lblTemp.Text = "Temp: 26°C";
+            this.lblTemp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblWeatherDesc
+            // 
+            this.lblWeatherDesc.BackColor = System.Drawing.Color.Transparent;
+            this.lblWeatherDesc.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblWeatherDesc.Font = new System.Drawing.Font("Yu Gothic UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWeatherDesc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
+            this.lblWeatherDesc.Location = new System.Drawing.Point(15, 15);
+            this.lblWeatherDesc.Name = "lblWeatherDesc";
+            this.lblWeatherDesc.Size = new System.Drawing.Size(406, 25);
+            this.lblWeatherDesc.TabIndex = 2;
+            this.lblWeatherDesc.Text = "Desc: Clear Sky";
+            this.lblWeatherDesc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // notifyIcon1
             // 
             this.notifyIcon1.Text = "Downloads Manager";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
@@ -332,6 +555,18 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.iconCurrentChildForm)).EndInit();
+            this.pnlDesktop.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pcbWeather)).EndInit();
+            this.panel10.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -356,6 +591,24 @@
         private System.Windows.Forms.Button btnMinimize;
         private System.Windows.Forms.Button btnMaximize;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label lblClock;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Panel pnlStatsOnHome;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Label lblTemp;
+        private System.Windows.Forms.Label lblWeatherDesc;
+        private System.Windows.Forms.PictureBox pcbWeather;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Label lblCity;
     }
 }
 

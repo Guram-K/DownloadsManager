@@ -24,10 +24,11 @@ namespace DownloadsManager
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            CustomServiceContainer.AddService<IFileManager, FileManager>(new FileManager());
+            CustomServiceContainer.AddService<IWeatherApi, WeatherApi>(new WeatherApi());
+
             MyFileWatcher fw = new MyFileWatcher();
             var frm = new Form1(fw);
-
-            CustomServiceContainer.AddService<IFileManager, FileManager>(new FileManager());
             
             Application.Run(frm);
         }

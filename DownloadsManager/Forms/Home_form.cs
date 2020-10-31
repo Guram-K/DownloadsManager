@@ -3,9 +3,13 @@
 using DownloadsManager.FileWatcher;
 using DownloadsManager.Forms;
 using FontAwesome.Sharp;
+using PCL_real.Abstraction.Models;
+using PCL_real.Abstraction.Services;
+using ServiceContainer;
 using System;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -32,6 +36,57 @@ namespace DownloadsManager
             //this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
 
             fw._fileSystemWatcher.SynchronizingObject = this;
+
+            InitComponents();
+        }
+
+        private void InitComponents()
+        {
+            timer1.Start();
+            lblDate.Text = DateTime.Now.ToString("dd MMMM yyyy");
+            SetStats();
+            SetWeather();
+        }
+
+        private async void SetWeather()
+        {
+            try
+            {
+                var data = await CustomServiceContainer.GetService<IWeatherApi>().GetWeatherData(resources.city, resources.weatherApiKey);
+                var dto = CustomServiceContainer.GetService<IWeatherApi>().GetWeatherDto(data);
+                SetValuesW(dto);
+            }
+            catch (Exception)
+            {
+                SetDefValuesW();
+            }
+        }
+
+        private void SetValuesW(IWeatherDto dto)
+        {
+            lblCity.Text = dto.name;
+            lblWeatherDesc.Text = $"Desc: {dto.weather.First().description}";
+            lblTemp.Text = $"Temp: {(dto.main.temp - 273.15).ToString()}°C";
+            pcbWeather.Image = Image.FromStream(CustomServiceContainer.GetService<IWeatherApi>().GetWeatherIcon(dto.weather.First().icon));
+        }
+
+        private void SetDefValuesW()
+        {
+            lblCity.Text = resources.city;
+            lblWeatherDesc.Text = $"Desc: no connection";
+            lblTemp.Text = $"Temp: no connection";
+        }
+
+        private void SetStats()
+        {
+            var rm = new Statistics_form(8, false);
+            rm.TopLevel = false;
+            rm.FormBorderStyle = FormBorderStyle.None;
+            rm.Dock = DockStyle.Fill;
+            pnlStatsOnHome.Controls.Add(rm);
+            pnlStatsOnHome.Tag = rm;
+            rm.BringToFront();
+            rm.Show();
         }
 
         private struct RGBColors
@@ -113,7 +168,7 @@ namespace DownloadsManager
         private void btnStats_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color3);
-            OpenChildForm(new Statistics_form(), (sender as Button).Text);
+            OpenChildForm(new Statistics_form(12, true), (sender as Button).Text);
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
@@ -196,6 +251,12 @@ namespace DownloadsManager
             this.WindowState = FormWindowState.Normal;
             this.ShowInTaskbar = true;
             notifyIcon1.Visible = false;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            DateTime dateTime = DateTime.Now;
+            this.lblClock.Text = dateTime.ToString("h:mm:ss tt");
         }
     }
 }

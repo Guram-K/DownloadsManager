@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -44,13 +47,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstraction\Models\IFileModel.cs" />
+    <Compile Include="Abstraction\Models\IMainDTO.cs" />
     <Compile Include="Abstraction\Models\ISavedFileModel.cs" />
+    <Compile Include="Abstraction\Models\IWeatherDto.cs" />
+    <Compile Include="Abstraction\Models\IWeatherInfoDTO.cs" />
     <Compile Include="Abstraction\Services\IFileManager.cs" />
+    <Compile Include="Abstraction\Services\IWeatherApi.cs" />
     <Compile Include="Implementation\Models\FileModel.cs" />
     <Compile Include="Implementation\Models\SavedFileModel.cs" />
+    <Compile Include="Implementation\Models\WeatherDto.cs" />
+    <Compile Include="Implementation\Models\WeatherModel.cs" />
     <Compile Include="Implementation\Services\FileManager.cs" />
     <Compile Include="Implementation\Services\ReadWriter.cs" />
+    <Compile Include="Implementation\Services\WeatherApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

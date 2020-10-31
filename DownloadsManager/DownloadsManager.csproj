@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>..\..\..\BTU\Forms\Bunifu_UI_WinForms_1.11.5.1\Bunifu_UI_WinForms_1.11.5.1\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
     <Reference Include="FontAwesome.Sharp, Version=5.15.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FontAwesome.Sharp.5.15.1\lib\net45\FontAwesome.Sharp.dll</HintPath>
     </Reference>
@@ -42,6 +45,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -106,11 +112,20 @@
     <EmbeddedResource Include="Forms\File_form.resx">
       <DependentUpon>File_form.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Folders_form.resx">
+      <DependentUpon>Folders_form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Home_form.resx">
       <DependentUpon>Home_form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Notification_form.resx">
       <DependentUpon>Notification_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Settings_form.resx">
+      <DependentUpon>Settings_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Statistics_form.resx">
+      <DependentUpon>Statistics_form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -172,6 +187,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\down-arrow_sort_8px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\earth.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

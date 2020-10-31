@@ -27,6 +27,7 @@ namespace DownloadsManager
             InitializeComponent();
             _files = new List<SavedFileModel>();
             _files = CustomServiceContainer.GetService<IFileManager>().GetAllFiles(resources.targetPath);
+
             _files = _files.OrderBy(x => x.FileName);
             btnNameSort.Image = resources.up_arrow_sort_8px;
             alphOrder = 1;

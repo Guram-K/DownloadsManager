@@ -61,11 +61,30 @@ namespace DownloadsManager {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to tbilisi.
+        /// </summary>
+        internal static string city {
+            get {
+                return ResourceManager.GetString("city", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap down_arrow_sort_8px {
             get {
                 object obj = ResourceManager.GetObject("down_arrow_sort_8px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap earth {
+            get {
+                object obj = ResourceManager.GetObject("earth", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -135,6 +154,15 @@ namespace DownloadsManager {
             get {
                 object obj = ResourceManager.GetObject("up_arrow_sort_8px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to bd2f8e931b836b78b2814133e44214a9.
+        /// </summary>
+        internal static string weatherApiKey {
+            get {
+                return ResourceManager.GetString("weatherApiKey", resourceCulture);
             }
         }
     }
