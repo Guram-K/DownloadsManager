@@ -54,6 +54,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileWatcher\FileWatcher.cs" />
+    <Compile Include="Forms\File_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\File_form.Designer.cs">
+      <DependentUpon>File_form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Notification_form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,9 @@
     <Compile Include="Forms\Statistics_form.Designer.cs">
       <DependentUpon>Statistics_form.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\File_form.resx">
+      <DependentUpon>File_form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Home_form.resx">
       <DependentUpon>Home_form.cs</DependentUpon>
     </EmbeddedResource>
@@ -145,6 +154,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\direct-download.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconFile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconFile24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\down-arrow_sort.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up-arrow_sort.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up-arrow_sort_8px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\down-arrow_sort_8px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

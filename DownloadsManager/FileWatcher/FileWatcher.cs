@@ -39,7 +39,8 @@ namespace DownloadsManager.FileWatcher
                 if (result)
                 {
                     Notification_form ntf = new Notification_form(file.TargetPath);
-                    ntf.showAlert(file.FileName + " has downloaded", file.Creation.ToString("h:mm tt"));
+                    var msg = file.FileName.Length > 10 ? file.FileName.Substring(0, 10) + "..." : file.FileName;
+                    ntf.showAlert(msg + " has downloaded", file.Creation.ToString("h:mm tt"));
                 }
             }
         }

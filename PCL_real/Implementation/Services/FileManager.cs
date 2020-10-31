@@ -20,6 +20,10 @@ namespace PCL_real.Implementation.Services
             if (Directory.Exists(targetPath)) 
                 AllFiles = Directory.GetFiles(targetPath, "*.*", SearchOption.AllDirectories).ToList();
 
+            var tmp = AllFiles.Where(x => x.Contains(".ini")).ToList();
+
+            foreach (var file in tmp)
+            { AllFiles.Remove(file); }
 
             return GetSavedModels(AllFiles, targetPath);
         }
